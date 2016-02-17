@@ -2,7 +2,17 @@
 
 ## Usage
 
-    TODO
+    $ julia
+    julia> using Tree
+
+    julia> n = Tree.node
+    #=> Tree.node
+
+    julia> n.set_value("my_value")
+    julia> n.value
+    #=> "my_value"
+
+    julia> exit()
 
 ## Development
 

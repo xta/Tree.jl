@@ -1,5 +1,5 @@
 module Tree
 
-# package code goes here
+  include("node.jl")
 
-end # module
+end

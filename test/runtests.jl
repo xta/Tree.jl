@@ -2,7 +2,8 @@ using Tree
 using Base.Test
 
 tests = [
-          "Tree"
+          "Tree",
+          "node"
         ]
 
 for test in tests
