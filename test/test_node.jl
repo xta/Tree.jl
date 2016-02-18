@@ -1,7 +1,9 @@
-# set / get value string
+# set / get Node value
 
-test_node = Tree.node
-test_node.set_value("something")
+a_node = Tree.Node("some_value")
+@test a_node.value == "some_value"
 
-@test test_node.value == "something"
-@test test_node.value != "something_else"
+another_node = Tree.Node("different_value")
+@test another_node.value == "different_value"
+
+@test a_node.value == "some_value"
