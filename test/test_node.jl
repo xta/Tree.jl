@@ -31,3 +31,13 @@ Tree.add_children(parent_node, [another_child_node, third_child_node])
 @test get(child_node.parent) == parent_node
 @test get(another_child_node.parent) == parent_node
 @test get(third_child_node.parent) == parent_node
+
+# check if Node is leaf (no children)
+
+@test Tree.is_leaf(child_node) == true
+@test Tree.is_leaf(parent_node) == false
+
+# check if Node is root (no parent)
+
+@test Tree.is_root(parent_node) == true
+@test Tree.is_root(child_node) == false

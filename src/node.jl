@@ -15,3 +15,11 @@ function add_children(parent::Node, children::Array)
     push!(parent.children, child)
   end
 end
+
+function is_leaf(node::Node)
+  length(node.children) <= 0
+end
+
+function is_root(node::Node)
+  isnull(node.parent)
+end
