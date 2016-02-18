@@ -28,9 +28,10 @@ Tree.add_children(parent_node, [another_child_node, third_child_node])
 
 # get Node parent
 
-@test get(child_node.parent) == parent_node
-@test get(another_child_node.parent) == parent_node
-@test get(third_child_node.parent) == parent_node
+@test Tree.get_parent(parent_node) == nothing
+@test Tree.get_parent(child_node) == parent_node
+@test Tree.get_parent(another_child_node) == parent_node
+@test Tree.get_parent(third_child_node) == parent_node
 
 # check if Node is leaf (no children)
 

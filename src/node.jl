@@ -16,6 +16,12 @@ function add_children(parent::Node, children::Array)
   end
 end
 
+function get_parent(node::Node)
+  if !isnull(node.parent)
+    get(node.parent)
+  end
+end
+
 function is_leaf(node::Node)
   length(node.children) <= 0
 end
@@ -59,7 +65,7 @@ function depth(node::Node, count=0)
   if isnull(node.parent)
     return count
   else
-    depth(get(node.parent), count+1)
+    depth(get_parent(node), count+1)
   end
 end
 
@@ -77,6 +83,6 @@ function root(node::Node)
   if is_root(node)
     return node
   else
-    root(get(node.parent))
+    root(get_parent(node))
   end
 end
