@@ -53,3 +53,21 @@ function is_sibling(possible_sibling::Node, check_node::Node)
     end
   end
 end
+
+# get distance from node to root (top)
+function depth(node::Node, count=0)
+  if isnull(node.parent)
+    return count
+  else
+    depth(get(node.parent), count+1)
+  end
+end
+
+# get longest distance from node to longest child/grandchild (bottom)
+function height(node::Node)
+  if length(node.children) <= 0
+    return 0
+  else
+    return 1 + maximum( map(height, node.children) )
+  end
+end
