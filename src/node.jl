@@ -7,20 +7,32 @@ end
 # Outer Constructor Method for convenience
 Node(v) = Node(v, Nullable{Node}(), Array(Node, 0))
 
-# methods
+# build tree
 
-function add_children(parent::Node, children::Array)
+function add_children!(parent::Node, children::Array)
   for child in children
     child.parent = Nullable(parent)
     push!(parent.children, child)
   end
 end
 
+# get Node
+
 function get_parent(node::Node)
   if !isnull(node.parent)
     get(node.parent)
   end
 end
+
+function get_root(node::Node)
+  if is_root(node)
+    return node
+  else
+    get_root(get_parent(node))
+  end
+end
+
+# helpers
 
 function is_leaf(node::Node)
   length(node.children) <= 0
@@ -75,14 +87,5 @@ function height(node::Node)
     return 0
   else
     return 1 + maximum( map(height, node.children) )
-  end
-end
-
-# get root node
-function root(node::Node)
-  if is_root(node)
-    return node
-  else
-    root(get_parent(node))
   end
 end

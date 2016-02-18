@@ -12,13 +12,13 @@ another_node = Tree.Node("different_value")
 
 parent_node = Tree.Node("parent")
 child_node = Tree.Node("child_1")
-Tree.add_children(parent_node, [child_node])
+Tree.add_children!(parent_node, [child_node])
 
 @test length(parent_node.children) == 1
 
 another_child_node = Tree.Node("child_2")
 third_child_node = Tree.Node("child_3")
-Tree.add_children(parent_node, [another_child_node, third_child_node])
+Tree.add_children!(parent_node, [another_child_node, third_child_node])
 
 @test length(parent_node.children) == 3
 
@@ -46,7 +46,7 @@ Tree.add_children(parent_node, [another_child_node, third_child_node])
 # check if Node is ancestor (above/parent) of other Node
 
 grandchild_node = Tree.Node("grandchild")
-Tree.add_children(child_node, [grandchild_node])
+Tree.add_children!(child_node, [grandchild_node])
 
 @test Tree.is_ancestor(parent_node, child_node) == true
 @test Tree.is_ancestor(parent_node, grandchild_node) == true
@@ -77,10 +77,10 @@ Tree.add_children(child_node, [grandchild_node])
 
 grand_grandchild_node_1 = Tree.Node("grand_grandchild_node_1")
 grand_grandchild_node_2 = Tree.Node("grand_grandchild_node_2")
-Tree.add_children(grandchild_node, [grand_grandchild_node_1, grand_grandchild_node_2])
+Tree.add_children!(grandchild_node, [grand_grandchild_node_1, grand_grandchild_node_2])
 
 grand_grand_grandchild_node_1 = Tree.Node("grand_grand_grandchild_node_1")
-Tree.add_children(grand_grandchild_node_1, [grand_grand_grandchild_node_1])
+Tree.add_children!(grand_grandchild_node_1, [grand_grand_grandchild_node_1])
 
 #                       parent
 #     child_node, another_child_node, third_child_node
@@ -111,8 +111,8 @@ Tree.add_children(grand_grandchild_node_1, [grand_grand_grandchild_node_1])
 
 # get root Node
 
-@test Tree.root(parent_node) == parent_node
-@test Tree.root(child_node) == parent_node
-@test Tree.root(third_child_node) == parent_node
-@test Tree.root(grand_grandchild_node_2) == parent_node
-@test Tree.root(grand_grand_grandchild_node_1) == parent_node
+@test Tree.get_root(parent_node) == parent_node
+@test Tree.get_root(child_node) == parent_node
+@test Tree.get_root(third_child_node) == parent_node
+@test Tree.get_root(grand_grandchild_node_2) == parent_node
+@test Tree.get_root(grand_grand_grandchild_node_1) == parent_node
