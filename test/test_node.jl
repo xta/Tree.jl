@@ -108,3 +108,10 @@ Tree.add_children(grand_grandchild_node_1, [grand_grand_grandchild_node_1])
 @test Tree.height(grand_grandchild_node_2) == 0
 @test Tree.height(grand_grand_grandchild_node_1) == 0
 
+# get root Node
+
+@test Tree.root(parent_node) == parent_node
+@test Tree.root(child_node) == parent_node
+@test Tree.root(third_child_node) == parent_node
+@test Tree.root(grand_grandchild_node_2) == parent_node
+@test Tree.root(grand_grand_grandchild_node_1) == parent_node

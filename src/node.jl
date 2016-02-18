@@ -71,3 +71,12 @@ function height(node::Node)
     return 1 + maximum( map(height, node.children) )
   end
 end
+
+# get root node
+function root(node::Node)
+  if is_root(node)
+    return node
+  else
+    root(get(node.parent))
+  end
+end
